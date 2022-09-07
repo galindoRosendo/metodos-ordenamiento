@@ -1,5 +1,4 @@
 const readline = require('readline');
-const unsortedArray = [4, 9, 2, 1, 6, 3, 8, 5, 7, 15, 12, 20, 11];
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -11,11 +10,18 @@ rl.question('Select a sort method:\n1. Quick Sort \n2. Radix\n', function (metho
     switch (method) {
         case "1":    
             console.log('Quick Sort Selected');
-            console.log(quickSort(unsortedArray));
+            console.log('========== Unsorted Array ==========');
+            console.log(unsortedArray.join(","));
+            console.log('========== Sorted Array ==========');
+            console.log(quickSort(unsortedArray).join(","));
             break;
         case "2":
             console.log('Radix Selected');
-            console.log(radixSort(unsortedArray.slice()));
+            console.log('========== Unsorted Array ==========');
+            console.log(unsortedArray.join(","));
+            console.log('========== Sorted Array ==========');
+            console.log(unsortedArray.join(","));
+            console.log(radixSort(unsortedArray.slice()).join(","));
             break;
         default:
             console.log('Not valid method');
@@ -28,6 +34,10 @@ rl.on('close', function () {
   console.log('\nSee you !!!');
   process.exit(0);
 });
+
+//#region Variables
+const unsortedArray = randomListNumber(1000);
+//#endregion
 
 //#region Public Methods
 function quickSort(array) {
@@ -76,5 +86,21 @@ function radixSort(inputArray){
         inputArray = [].concat(...bucketArray);
     }
     return inputArray;
+}
+//#endregion
+
+//#region Private Methods
+function randomListNumber(size) {
+    var result = [];
+
+    while (result.length < size) {
+        var randomNumber = Math.floor(Math.random() * size);
+
+        if (!result.includes(randomNumber)) {
+            result.push(randomNumber);
+        }
+    }
+    
+    return result;
 }
 //#endregion

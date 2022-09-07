@@ -7,7 +7,7 @@ namespace MetodosOrdenamiento
     class Program
     {
         #region Variables
-        public static List<int> unsortedArray = new List<int>() { 5, 8, 9, 4, 3, 2, 1, 10, 6, 7 };
+        public static List<int> unsortedArray = RandomListNumber(1000, 1, 9999);
         #endregion
         static void Main(string[] args)
         {
@@ -20,10 +20,16 @@ namespace MetodosOrdenamiento
                 {
                     case 1:
                         Console.WriteLine("Quick Sort Selected");
+                        Console.WriteLine("========== Unsorted Array ==========");
+                        Console.WriteLine(string.Join(",", unsortedArray));
+                        Console.WriteLine("========== Sorted Array ==========");
                         Console.WriteLine(string.Join(",", QuickSort(unsortedArray)));
                         break;
                     case 2:
                         Console.WriteLine("Radix Selected");
+                        Console.WriteLine("========== Unsorted Array ==========");
+                        Console.WriteLine(string.Join(",", unsortedArray));
+                        Console.WriteLine("========== Sorted Array ==========");
                         Console.WriteLine(string.Join(",", RadixSort(unsortedArray, unsortedArray.Count)));
                         break;
                     default:
@@ -103,6 +109,22 @@ namespace MetodosOrdenamiento
                 array[i] = outputArr[i];
 
             return array;
+        }
+        private static List<int> RandomListNumber(int size, int initial, int final)
+        {
+            Random rnd = new Random();
+            List<int> result = new List<int>();
+
+            while (result.Count < size)
+            {
+                int randomNumber = rnd.Next(initial, final);
+
+                if (!result.Contains(randomNumber))
+                {
+                    result.Add(randomNumber);
+                }
+            }
+            return result;
         }
         #endregion
     }
