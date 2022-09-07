@@ -1,3 +1,5 @@
+const unsortedArray = [4, 9, 2, 1, 6, 3, 8, 5, 7, 15, 12, 20, 11];
+
 function quickSort(array) {
     
     if (array.length < 1) {
@@ -20,4 +22,4 @@ function quickSort(array) {
     return [].concat(quickSort(left), pivot, quickSort(right));
 }
 
-console.log(quickSort([4, 9, 2, 1, 6, 3, 8, 5, 7, 15, 12, 20, 11]));
+console.log(quickSort(unsortedArray));
