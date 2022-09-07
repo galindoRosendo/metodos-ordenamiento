@@ -36,7 +36,7 @@ rl.on('close', function () {
 });
 
 //#region Variables
-const unsortedArray = randomListNumber(1000);
+const unsortedArray = randomListNumber(1000, 1, 9999);
 //#endregion
 
 //#region Public Methods
@@ -90,11 +90,11 @@ function radixSort(inputArray){
 //#endregion
 
 //#region Private Methods
-function randomListNumber(size) {
+function randomListNumber(size, min, max) {
     var result = [];
 
     while (result.length < size) {
-        var randomNumber = Math.floor(Math.random() * size);
+        var randomNumber = Math.floor(Math.random() * (max - min) + min);
 
         if (!result.includes(randomNumber)) {
             result.push(randomNumber);
